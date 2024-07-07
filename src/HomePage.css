@@ -198,3 +198,89 @@ body, html {
     border: 1px solid #ccc;
     width: 200px;
 }
+
+.Activity {
+    padding: 20px;
+}
+
+.Activity h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.TransactionList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Transaction {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.TransactionDetails p {
+    margin: 5px 0;
+}
+
+.Account {
+    padding: 20px;
+}
+
+.Account h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.ProfileDetails, .ProfileForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ProfileDetails p, .ProfileForm label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.ProfilePicture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.ProfileForm input, .ProfileForm textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.ProfileForm textarea {
+    resize: vertical;
+}
+
+.ProfileForm button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.ProfileForm button:hover {
+    background-color: #0056b3;
+}

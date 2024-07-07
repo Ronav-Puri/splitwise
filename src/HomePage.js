@@ -97,24 +97,113 @@ function Friends({friendNames,setFriendNames}) {
 }
 
 function Activity() {
+    const [transactions, setTransactions] = useState([
+        { id: 1, group: "Group 1", person: "Alice", amount: 50, date: "2024-07-01" },
+        { id: 2, group: "Group 2", person: "Bob", amount: 30, date: "2024-06-28" },
+        { id: 3, group: "Group 3", person: "Charlie", amount: 100, date: "2024-06-25" },
+    ]);
+
     return (
         <div className="Activity">
-            Activity Content
+            <h1>Past Transactions</h1>
+            <div className="TransactionList">
+                {transactions.map((transaction) => (
+                    <div key={transaction.id} className="Transaction">
+                        <div className="TransactionDetails">
+                            <p><strong>Group:</strong> {transaction.group}</p>
+                            <p><strong>Person:</strong> {transaction.person}</p>
+                            <p><strong>Amount:</strong> ${transaction.amount}</p>
+                            <p><strong>Date:</strong> {transaction.date}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
 
 function Account() {
+    const [profile, setProfile] = useState({
+        username: "JohnDoe123",
+        email: "john.doe@example.com",
+        contact: "+91-9999999999",
+        profilePicture: person
+    });
+    const [isEditing, setIsEditing] = useState(false);
+    const [updatedProfile, setUpdatedProfile] = useState(profile);
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
+
+    const handleSave = () => {
+        setProfile(updatedProfile);
+        setIsEditing(false);
+    };
+
+    const handlePictureChange = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                setUpdatedProfile({ ...updatedProfile, profilePicture: event.target.result });
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    };
+
     return (
         <div className="Account">
-            Account Content
+            <h1>Profile</h1>
+            {isEditing ? (
+                <div className="ProfileForm">
+                    <label>
+                        Profile Picture:
+                        <input type="file" onChange={handlePictureChange} />
+                        <img src={updatedProfile.profilePicture} alt="Profile" className="ProfilePicture" />
+                    </label>
+                    <label>
+                        Username:
+                        <input
+                            type="text"
+                            value={updatedProfile.username}
+                            onChange={(e) => setUpdatedProfile({ ...updatedProfile, username: e.target.value })}
+                        />
+                    </label>
+                    <label>
+                        Email:
+                        <input
+                            type="email"
+                            value={updatedProfile.email}
+                            onChange={(e) => setUpdatedProfile({ ...updatedProfile, email: e.target.value })}
+                        />
+                    </label>
+                    <label>
+                        Contact:
+                        <input
+                            type="tel"
+                            value={updatedProfile.contact}
+                            onChange={(e) => setUpdatedProfile({ ...updatedProfile, contact: e.target.value })}
+                        />
+                    </label>
+                    <button onClick={handleSave}>Save</button>
+                </div>
+            ) : (
+                <div className="ProfileDetails">
+                    <img src={profile.profilePicture} alt="Profile" className="ProfilePicture" />
+                    <p><strong>Username : </strong> {profile.username}</p>
+                    <p><strong>Email : </strong> {profile.email}</p>
+                    <p><strong>Contact : </strong> {profile.contact}</p>
+                    <button onClick={handleEdit}>Edit Profile</button>
+                </div>
+            )}
         </div>
     );
 }
 
+
 export default function HomePage() {
     const [templates, setTemplates] = useState([<Template key={0} />]);
-    const [friendNames, setFriendNames] = useState([]);
+    const [friendNames, setFriendNames] = useState(["Name"]);
     return (
         <Router>
             <div className="HomePage">
