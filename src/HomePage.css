@@ -9,7 +9,7 @@ body, html {
     height: 100vh;
     width: 100%;
     position: fixed;
-    background-image: url('https://images.unsplash.com/photo-1557683304-673a23048d34');
+    background-image: url('/src/background.jpeg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -57,11 +57,13 @@ body, html {
     font-size: 16px;
     color: white;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .Groups {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     gap: 20px;
     padding: 20px;
     align-items: start;
@@ -99,6 +101,7 @@ body, html {
 
 .Template {
     display: flex;
+    width: 90%;
     background-color: white;
     align-items: center;
     color: black;
@@ -124,4 +127,74 @@ body, html {
 
 .Template div {
     padding: 10px;
+}
+
+
+.FriendList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 23%);
+    gap: 20px;
+    transition: transform 0.3s;
+}
+
+.FriendBoxes {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    color: black;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.FriendBoxes:hover {
+    transform: scale(1.05);
+}
+
+.FriendBoxes img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    margin: 10px;
+}
+
+.AddFriendContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.AddFriendButton, .AddFriendForm button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.AddFriendButton:hover, .AddFriendForm button:hover {
+    background-color: #0056b3;
+}
+
+.AddFriendForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.AddFriendForm input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
 }
