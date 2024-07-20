@@ -124,7 +124,7 @@ function Activity() {
 
 function Account() {
     const [profile, setProfile] = useState({
-        username: "JohnDoe123",
+        username: "John Doe",
         email: "john.doe@example.com",
         contact: "+91-9999999999",
         profilePicture: person
